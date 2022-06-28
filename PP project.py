@@ -11,7 +11,7 @@ detector = HandDetector(maxHands=1)
 # Loop until you hit the Esc key
 while True:
     success, img = cap.read()
-    imgBG = cv2.imread('./imgBG.png ')
+    imgBG = cv2.imread('imgBG.png')
     imgScaled = cv2.resize(img, (0, 0), None, 0.495, 0.635)
 
     cv2.imshow("Image", img)
