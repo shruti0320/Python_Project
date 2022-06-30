@@ -3,7 +3,6 @@ import cvzone
 from cvzone.HandTrackingModule import HandDetector
 import time
 
-
 cap = cv2.VideoCapture(0)
 cap.set(3, 640)
 cap.set(4, 480)
@@ -22,14 +21,14 @@ while True:
     hands, img = detector.findHands(imgScaled)  # with draw
 
     if startGame:
-
         if stateResult is False:
-            timer = time.time()- intialTime
-            cv2.putText(imgBG, str(int(timer)),(542,390),cv2.FONT_HERSHEY_PLAIN,6,(255,0,255),4)
-    if hands:
-        hand = hands[0]
-        fingers= detector.fingersUp(hand)
-        print(fingers)
+            timer = time.time() - initialTime
+            cv2.putText(imgBG, str(int(timer)), (437, 325), cv2.FONT_HERSHEY_PLAIN, 6, (255, 0, 255), 4)
+
+            if hands:
+                hand = hands[0]
+                fingers= detector.fingersUp(hand)
+                print(fingers)
 
     imgBG[157:486, 584:880] = imgScaled
 
@@ -40,7 +39,8 @@ while True:
     key = cv2.waitKey(1)
     if key == ord('s'):
         startGame=True
-        initialTime = time.time()    
+        initialTime = time.time()
+        stateResult = False
 
 
 # Detect if the Esc key has been pressed
